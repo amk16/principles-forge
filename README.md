@@ -1,77 +1,118 @@
 # Principles Forge
 
-**A method for growing your own set of principles — for any field — using Claude, from real examples instead of vibes.**
+**Build your own rulebook for any craft — with Claude Code — from real examples instead of opinions.**
 
-Most "principles" you find online are one person's taste, stated with confidence. This kit builds principles the other way: you feed Claude real *exemplars* of strong work, it extracts the concrete specifics, and a rule only earns "principle" status after the same pattern shows up across **multiple separate sessions**. Nothing gets promoted on a single lucky example, and nothing that isn't measured gets stated as fact.
+Show Claude great examples of work in a field you care about. It studies exactly what they do, finds the patterns that keep showing up, and turns the ones that prove themselves into a short list of rules you can actually trust. Nothing becomes a "rule" on a single lucky example, and nothing that isn't grounded in a real example gets stated as fact.
 
-It runs in **Claude Code**. You bring the examples — paste them in, or just hand over **URLs** and Claude fetches and probes them itself (page content via web fetch; for visual fields like web design, computed fonts/colors/layout via the `chrome-devtools` MCP, exactly like an award-site design sweep). You supply the taste in *what* counts as a good example; Claude does the measuring.
+Works for anything — cold email, pitch decks, web design, recipes, negotiation, UI, technical writing. You pick the field.
 
 ---
 
-## How it works: three layers
+## Get started (5 minutes to your first rules)
 
-```
-raw/sweeps/     immutable evidence   →  every session's exact specifics, dated, never edited
-   ↓ (a pattern across ≥2 exemplars)
-trends/now.md   perishable reading   →  "what strong work is doing right now" — rewritten each session
-   ↓ (holds across 2+ sessions, you approve it)
-principles/     durable rules        →  the earned principles you actually consult
+**1. Get the kit**
+
+```bash
+git clone https://github.com/amk16/principles-forge.git
 ```
 
-Every claim carries a **confidence tag** (`[high]` / `[medium]` / `[low]`) and points either to the exemplar it came from or to `[prior-knowledge]` (received wisdom, honestly labeled). Outdated claims are **superseded, never deleted**, so the vault keeps its own history.
+Or download the ZIP (green **Code** button → *Download ZIP*) and unzip it.
 
-That two-stage ladder — evidence → trend → principle — is the whole trick. It's why the principles you end up with are ones you've *watched* hold up, not ones you hoped were true.
+**2. Open the folder in Claude Code**
+
+```bash
+cd principles-forge
+claude
+```
+
+**3. Type `/start`**
+
+That's the whole thing. `/start` explains what this is in plain language, then walks you the rest of the way:
+
+- asks a few friendly questions to set up your field,
+- helps you gather your first 4–6 examples (paste them, or just give links — Claude fetches them for you),
+- studies them and writes up what it found.
+
+About 10–15 minutes, no jargon, no technical steps.
+
+**4. That's your first draft.** Your rules live in the `principles/` folder, in plain markdown you can read and edit.
+
+**5. Come back anytime** with more examples and type `/generate`. Each round makes your rulebook sharper — and rules only "graduate" once they've held up across multiple rounds.
 
 ---
 
-## Use it in 3 steps
+## The three commands
 
-1. **Open the scaffold in Claude Code.** Drop this folder into a project (or clone it) and open it. For visual fields (web design and the like) also install the `chrome-devtools` MCP so Claude can probe live pages; text fields need nothing extra.
-2. **Run `/start`.** This is the only thing a first-timer needs. It explains what the kit is in plain language, then walks you the whole way — a few friendly setup questions, gathering your first examples, and producing your first draft of rules — no jargon, about 10–15 minutes.
-3. **Run `/generate` for every round after that.** Whenever you've collected a few more examples (pasted, or just links it fetches and probes for you), it studies them, updates what's working, and graduates patterns into trusted rules once they've held up across rounds.
-
-> Under the hood, `/start` runs `/setup` (one-time configuration) then your first `/generate`. Power users can call those two directly and skip the guided intro.
-
-Do real work in your field? Read your `principles/` pages first, then skim `trends/now.md` for the current flavor.
-
-**Cadence:** `/generate` is the whole maintenance ritual. Run it before a big project, or roughly monthly when you've collected a fresh batch. It tolerates long gaps by design — there's no daily upkeep and nothing rots if you skip a month.
+| Command | When | What it does |
+|---|---|---|
+| `/start` | **Once**, the first time | Introduces the kit and walks you to your first output. Start here. |
+| `/generate` | **Every round after** | Takes new examples, updates what's working, promotes proven patterns into rules. |
+| *(just read* `principles/`*)* | When you're doing real work | Your trusted rulebook, ready to consult. |
 
 ---
 
-## What one principle looks like (worked example: cold-email copywriting)
+## Requirements
 
-After a couple of `/generate` sessions, a `principles/openers.md` page might hold:
+- **Claude Code** — that's it for most fields.
+- **Optional:** the `chrome-devtools` MCP, only if your field is **visual** (web design, landing pages) and you want Claude to measure live pages — real fonts, colors, and layout. Text fields (copy, decks, writing) don't need it. `/start` tells you if yours does.
+
+---
+
+## How it works (the idea in 30 seconds)
+
+Everything flows up through three layers, and a claim has to earn each step:
+
+```
+  You show examples
+        │
+        ▼
+  raw/          the receipts — exact specifics pulled from each example, dated, never edited
+        │  (a pattern shows up across 2+ examples)
+        ▼
+  trends/       "what's working right now" — the current reading, rewritten each round
+        │  (the pattern holds up across 2+ rounds, and you approve it)
+        ▼
+  principles/   your trusted rulebook — the rules you actually use
+```
+
+Every rule is tagged with **how sure we are** (`high` / `medium` / `low`) and **where it came from** (which examples, or honestly labeled as received wisdom). Old rules get **crossed out with a note**, never silently deleted — so your rulebook keeps its own history.
+
+That waiting period — a pattern has to prove itself twice before it's a rule — is the whole point. You end up with rules you've *watched* hold up, not ones someone hoped were true.
+
+---
+
+## What a finished rule looks like
+
+Example from a cold-email rulebook, after a couple of rounds:
 
 ```markdown
-## Principles
-
-1. **Name a specific, observable detail about them in the first line.** Generic
-   flattery ("love what you're building") reads as a mail-merge; a concrete
-   observation earns the next sentence. `[high — 2 sessions, confirmed 2026-08:
-   4/5 replied-to examples opened with a named detail]`
-2. **Get to the ask within 3 sentences.** Every measured high-reply example
-   stated its one ask by sentence 3; the low-reply pile averaged 6.
-   `[medium — 1 session]` ← [[2026-08-14 — reply-rate batch]]
+1. **Open with one specific, observable detail about the person.** Generic
+   flattery ("love what you're building") reads as a mass-mail; a concrete
+   observation earns the next sentence. `[high — 2 rounds, 4/5 replied-to
+   examples opened with a named detail]`
 ```
 
-Notice: each rule is an **imperative you can act on**, backed by a **count from named examples**, tagged with **how sure we are**. That's the output shape for any field — swap "openers" for "slide anatomy," "plating," "step clarity," whatever your dimensions are.
+Notice the shape: a **plain instruction you can act on**, backed by a **count from real examples**, tagged with **how confident we are**. Same shape for any field — swap "openers" for "slide layout," "plating," "step clarity," whatever fits your craft.
 
 ---
 
-## Layout
+## What's in the folder
 
 ```
-CLAUDE.md                  the operating manual + persona + the 9 hard rules
-.claude/skills/setup/      the one-time configuration wizard  (/setup)
-.claude/skills/generate/   the recurring distill session      (/generate)
-principles/_TEMPLATE.md     the anatomy of a principle page
-trends/now.md               perishable current reading (starts empty)
-raw/sweeps/                 immutable dated evidence lands here
-sources.md · index.md · log.md   registry · hub · append-only ledger
+CLAUDE.md                 the operating manual (persona + the rules of the method)
+.claude/skills/
+  start/                  /start    — the guided first run (start here)
+  setup/                  /setup    — one-time field configuration
+  generate/               /generate — the recurring round that grows your rules
+principles/               your rulebook (starts empty; _TEMPLATE.md shows the shape)
+trends/now.md             "what's working right now" (starts empty)
+raw/sweeps/               the dated receipts land here
+sources.md                where you find good examples
+index.md · log.md         the hub · a running history
 ```
 
-Git is **optional** — commit if you like a history, or just keep it as a plain folder.
+Git is **optional** — keep a history if you like, or just use it as a plain folder.
 
 ---
 
-*Adapted from a live web-design principles vault. The field-specific parts (galleries, browser probing, typographic dimensions) were stripped out; what remains is the portable method: measured exemplars, a confidence ladder, and human-approved promotion.*
+*Adapted from a live web-design principles vault. The web-specific parts were stripped out; what remains is the portable method — real examples, a confidence ladder, and rules that have to earn their place.*
