@@ -35,7 +35,7 @@ Get the page yourself, then extract:
 - **`(rendered)` attributes** (computed fonts, colors, sizes, layout, motion, runtime libraries) → probe in a **real browser via the `chrome-devtools` MCP**, mirroring a design sweep:
   1. Open a page; set viewport **1440×900** (`resize_page`) for run-over-run comparability.
   2. Navigate to the URL (read-only — never log in or submit forms); take a hero screenshot.
-  3. Run a computed-style probe via `evaluate_script` for exactly the `(rendered)` attributes the schema names (e.g. `getComputedStyle` on the relevant selectors; `document.fonts`; `window.gsap`/`THREE`/canvas census). Quote measured values, never guessed ones.
+  3. Run a computed-style probe via `evaluate_script` for exactly the `(rendered)` attributes the schema names (e.g. `getComputedStyle` on the relevant selectors; `document.fonts`; `window.gsap`/`THREE`/canvas census). Quote measured values, never guessed ones. **Probe robustly:** match text values (prices, counts, phrases) against container-level `innerText`, never leaf nodes only — modern frameworks split "$24 / per month" across child spans, and a leaf-only query reports the value missing. Likewise, checking the served HTML for a value can miss it when it lives in a hydration JSON payload (Next.js props) rather than markup — the rendered DOM is the source of truth for `(rendered)` attributes.
   4. Scroll and re-screenshot if the schema cares about anything below the fold.
 - If the domain's schema has **no `(rendered)` attributes**, `WebFetch` alone is enough — no browser needed. If a `(rendered)` attribute is required but the `chrome-devtools` MCP isn't available, mark it `n/a (needs chrome-devtools MCP)` and note it in caveats rather than guessing.
 

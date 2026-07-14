@@ -13,7 +13,7 @@ Read `CLAUDE.md`. If the `<< >>` placeholders are already filled (the vault is c
 
 ## Step 1 — Domain
 
-Ask: **"What field do you want to build principles for?"** Examples to prompt them: cold-email copywriting, pitch-deck design, technical writing, product onboarding, standup comedy sets, recipe development, negotiation, UI design. Get one clear noun phrase. This becomes `<<DOMAIN>>` everywhere.
+Ask: **"What field do you want to build principles for?"** Examples to prompt them: cold-email copywriting, pitch-deck design, technical writing, product onboarding, standup comedy sets, recipe development, negotiation, UI design. Get one clear noun phrase — **keep it short (2–4 words)**: it gets inlined into sentences all over `CLAUDE.md`, and a long phrase reads badly ("an evidence-bound selling productized AI/software services director"). If the owner's description is long, agree on a short form for the slot ("service selling") and keep the full description in the persona line's own words. This becomes `<<DOMAIN>>` everywhere.
 
 ## Step 2 — Persona
 
@@ -49,7 +49,7 @@ Ask where the owner encounters strong exemplars in this field (newsletters, swip
 
 ## Step 6 — Wire it up
 
-- Fill every `<< >>` slot in `CLAUDE.md` (persona, owner, domain, dimensions list, measurement schema).
+- Fill every `<< >>` slot in `CLAUDE.md` (persona, owner, domain, dimensions list, measurement schema), and **delete the "TEMPLATE FILE" HTML comment** at the top — the vault is no longer a template.
 - Update `index.md`: replace the placeholder domain language, list the dimension wikilinks in the Map and the "do real work" order, set State → `Sessions run: 0`.
 - Append a `log.md` entry: vault configured for `<<DOMAIN>>`, N dimensions, schema defined.
 - **Offer** (don't force) `git init && git add -A && git commit -m "Configure vault for <<DOMAIN>>"`. If the owner declines or git is unavailable, continue — the vault works as a plain folder.
